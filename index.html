@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>NSDC Form</title>
+    <link rel="stylesheet" href="styles.css">
+    
+    </head>
+    <body>
+        
+            <form id="formId">
+                <fieldset>
+                <label for="firstName"> First Name
+                    <input placeholder="Enter your First Name" type="text" id="firstName" required/>
+                </label>
+                <label for="lastName"> Last Name
+                    <input placeholder="Enter your Last Name" type="text" id="lastName" required/>
+                </label>
+                <label for="email"> Email Address
+                    <input placeholder="Enter your Email" type="email" id="email" required/>
+                </label>
+                <label for="gender">Gender: 
+                    <select id="gender">
+                        <option value="">Select an option</option>
+                    <option >Male</option>
+                <option>Female</option>
+                
+            </select>
+            </label>
+            <label for="checkbox" ><input id="checkbox" type="checkbox" />  Recently came to Nigeria within the last 14 days?</label>
+            <button type="submit" id="subBtn">Submit</button>  
+        </fieldset> 
+         
+        </form>
+
+        <!-- <form id="formUpdate">
+            <fieldset>
+            <label for="firstName2"> First Name
+                <input placeholder="Enter your First Name" type="text" id="firstName2" required/>
+            </label>
+            <label for="lastName2"> Last Name
+                <input placeholder="Enter your Last Name" type="text" id="lastName2" required/>
+            </label>
+            <label for="email2"> Email Address
+                <input placeholder="Enter your Email" type="email" id="email2" required/>
+            </label>
+            <label for="gender2">Gender: 
+                <select id="gender2">
+                    <option value="">Select an option</option>
+                <option >Male</option>
+            <option>Female</option>
+            
+        </select>
+        </label>
+        <label for="checkbox2" ><input id="checkbox2" type="checkbox" checked/>  Recently came to Nigeria within the last 14 days?</label>
+        <button type="submit" id="subBtn2" onsubmit="return editTable()">Update</button>  
+    </fieldset> 
+     
+    </form> -->
+
+        <section>
+            <table id="formTable">
+                <thead>
+                    <tr >
+                        <th>Name</th>
+                        <th>Email Address</th>
+                        <th>Gender</th>
+                        <th>Came to Nigeria within 14 days</th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+               
+                    
+               
+            </table>
+        </section>
+       
+
+
+
+
+
+
+        <script src="/app.js"></script>
+    </body>
+</html>
