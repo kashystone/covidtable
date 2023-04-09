@@ -7,23 +7,24 @@ let table = document.getElementById('formTable');
 let formPage = document.getElementById('formId');
 let updateForm = document.getElementById('formUpdate');
 let html;
-
-    
+let row;
+ let rowNum = 1;
 
 
 let button = document.getElementById('subBtn');
 
 button.addEventListener("click", function(event){
     event.preventDefault();
+    
     if(button.innerText === "Submit"){
     let cbValue = checkbox.checked ? "Yes" : "No";
-    if(!firstName.value || !lastName.value || !email.value){
+    if(!firstName.value || !lastName.value || !email.value || !gender.value){
         return alert("Fill in the details");
     }
     
     html = `
     <tr>
-        <td>${firstName.value} ${lastName.value}</td>
+        <td>${lastName.value} ${firstName.value} </td>
         <td>${email.value}</td>
         <td>${gender.value}</td>
         <td>${cbValue}</td>
@@ -38,6 +39,8 @@ button.addEventListener("click", function(event){
     firstName.value = lastName.value = email.value = gender.value = "";
     checkbox.checked = false;
 
+    rowNum++;
+
 }
 });
 
@@ -48,11 +51,8 @@ function updateToTable(e){
       document.getElementById('checkbox').checked = false;
   } else {
       document.getElementById('checkbox').checked = true;
-  }
-
-  
-   
-    let row = e.closest('tr');
+  } 
+    row = e.closest('tr');
     let nameCell = row.querySelector('td:first-child');
     let emailCell = nameCell.nextElementSibling;
     let genderCell = emailCell.nextElementSibling;
@@ -63,51 +63,61 @@ function updateToTable(e){
     
     document.getElementById('gender').value = genderCell.innerHTML;
     document.getElementById('email').value = emailCell.innerHTML;
-    document.getElementById('firstName').value = nameCell.innerHTML.split(" ")[1];
-    document.getElementById('lastName').value = nameCell.innerHTML.split(" ")[0];
-    
+    document.getElementById('firstName').value = nameCell.innerHTML.split(" ")[0];
+    document.getElementById('lastName').value = nameCell.innerHTML.split(" ")[1];
 
-
-    if(button.innerText === "Update"){
-
-        button.addEventListener("click", function(e){
-            e.preventDefault();
-            
-        
-           
-           
-            emailCell.innerHTML = document.getElementById('email').value;
-            genderCell.innerHTML = document.getElementById('gender').value;
-            nameCell.innerHTML = document.getElementById('lastName').value + " " + document.getElementById('firstName').value;
-            if(document.getElementById('checkbox').checked){
-            checkboxCell.innerHTML = `<td>Yes</td>`;
-            }else{ checkboxCell.innerHTML = `<td>No</td>`}
-            
-            //Return input to blank
-           
-            firstName.value = lastName.value = email.value = gender.value = "";
-           
-            button.innerHTML = "Submit";
-           
-        })
-    }
-
-
-    
-
-    
-    
-    
    
+  
 }
+
+
+    button.addEventListener("click", function(e){
+        e.preventDefault();
+        if(button.innerText === "Update"){
+     
+    
+    
+     let nameCell = row.querySelector('td:first-child');
+    let emailCell = nameCell.nextElementSibling;
+    let genderCell = emailCell.nextElementSibling;
+    let checkboxCell = genderCell.nextElementSibling;
+    let editCell = checkboxCell.nextElementSibling;
+    let delCell = editCell.nextElementSibling;
+       
+        emailCell.innerHTML = document.getElementById('email').value;
+        genderCell.innerHTML = document.getElementById('gender').value;
+        nameCell.innerHTML = document.getElementById('lastName').value + " " + document.getElementById('firstName').value;
+        if(document.getElementById('checkbox').checked){
+        checkboxCell.innerHTML = `<td>Yes</td>`;
+        }else{ checkboxCell.innerHTML = `<td>No</td>`}
+        
+        //Return input to blank
+       
+        firstName.value = lastName.value = email.value = gender.value = "";
+       
+        button.innerHTML = "Submit";
+    } 
+    })
+
 
 function deleteRow(delButton){
-    let row = delButton.closest('tr');
+ row = delButton.closest('tr');
     row.parentNode.removeChild(row);
-}
-  
+
+console.log(rowNum);
+    rowNum--;
+    if (rowNum === 1) {
+        // If there are no rows left, hide the table
+        table.style.display = "none";
+      }
+    
    
-// })
+    
+}
+
+
+
+
 
   
 
